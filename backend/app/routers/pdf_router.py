@@ -9,7 +9,7 @@ router = APIRouter()
 UPLOAD_FOLDER = "uploads"
 
 
-@router.post("/upload") # upload
+@router.post("/process") # upload
 async def upload_pdf(file: UploadFile = File(...)):
 
     upload_path = os.path.join("uploads", file.filename)
