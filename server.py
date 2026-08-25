@@ -1,11 +1,11 @@
 import sys
 import os
 
-# إضافة مجلد backend لمسارات النظام
+# إضافة مجلد backend إلى مسارات النظام قبل أي استيراد آخر
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "backend"))
 
 import gradio as gr
-from backend.main import app as fastapi_app
+from main import app as fastapi_app  # نستورد مباشرة من main لأن backend أصبح في sys.path
 
 # دمج FastAPI مع Gradio
 app = gr.mount_gradio_app(fastapi_app, gr.Interface(lambda x: x, "text", "text"), path="/gradio")
