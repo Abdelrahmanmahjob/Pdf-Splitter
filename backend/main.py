@@ -12,7 +12,7 @@ app.add_middleware(
     CORSMiddleware,
     # استخدم "*" للسماح بأي دومين في مرحلة التجربة
     allow_origins=["*"],
-    allow_credentials=True,
+    # allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
