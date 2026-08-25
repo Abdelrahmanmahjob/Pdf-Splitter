@@ -6,12 +6,12 @@ from app.api.status import router as status_router
 app = FastAPI(
     title="Request Splitter API",
     version="1.0.0"
-)
+) 
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://*.vercel.app",
+        "https://pdf-splitter-coral-eight.vercel.app/",
         "http://localhost:5173",
         "http://127.0.0.1:5173",
         "http://localhost:5174",
