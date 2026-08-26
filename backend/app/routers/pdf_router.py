@@ -6,19 +6,19 @@ from app.services.pdf_service import rotate_pdf
 router = APIRouter()
 
 
-UPLOAD_FOLDER = "uploads"
+UPLOAD_FOLDER = "/tmp"
 
 
 @router.post("/process") # upload
 async def upload_pdf(file: UploadFile = File(...)):
 
-    upload_path = os.path.join("uploads", file.filename)
+    upload_path = os.path.join(UPLOAD_FOLDER, file.filename)
 
     with open(upload_path, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
 
     output_path = os.path.join(
-        "output",
+        "/tmp",
         f"rotated_{file.filename}"
     )
 
