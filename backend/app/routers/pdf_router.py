@@ -11,16 +11,13 @@ UPLOAD_FOLDER = "/tmp"
 
 @router.post("/process") # upload
 async def upload_pdf(file: UploadFile = File(...)):
+    os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
     upload_path = os.path.join(UPLOAD_FOLDER, file.filename)
+    output_path = os.path.join(UPLOAD_FOLDER, f"rotated_{file.filename}")
 
     with open(upload_path, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
-
-    output_path = os.path.join(
-        "/tmp",
-        f"rotated_{file.filename}"
-    )
 
     rotate_pdf(upload_path, output_path)
 
